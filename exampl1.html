@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+.container {
+  display: grid;
+  grid-template-areas:
+    "menu content"
+    "footer footer";
+  grid-template-columns: 1fr 1fr;
+  background-color: gray;
+  gap:1px;
+
+}
+.container div {
+  background-color: white;
+}
+
+
+.container div.menu {
+  grid-area: menu;
+  padding:10px;
+}
+.container div.content {
+  grid-area: content;
+}
+.container div.footer {
+  grid-area: footer;
+  text-align: center;  
+}
+</style>
+</head>
+<body>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard & Financial Report</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+      color: #333;
+    }
+
+    nav {
+      background: #1a1a2e;
+      padding: 0 40px;
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+nav a {
+      color: #ccc;
+      text-decoration: none;
+      margin-right: 30px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      padding: 8px 0;
+      align-items: center;
+}
+    
+    
+
+    nav a:link {
+      color: #ccc;                      
+    }
+
+    nav a:visited {
+      color: #aaa;                       
+    }
+
+    nav a:hover {
+      color: #4dabf7;                    
+    }
+
+    nav a:active {
+      color: #ffffff;                  
+    }
+
+    nav a.active {
+      color: #4dabf7;
+      border-bottom: 2px solid #4dabf7;
+    }
+
+    .container {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    h1 {
+      margin-bottom: 25px;
+      color: #1a1a2e;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: scroll;
+    }
+     tr:hover { 
+
+      background-color: #4dabf7;
+
+
+     }
+
+    th {
+      background: #1a1a2e;
+      color: white;
+      padding: 14px 18px;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px 18px;
+      border-bottom: 1px solid #eee;
+    }
+
+    td:nth-child(2),
+    td:nth-child(3),
+    td:nth-child(4) {
+      text-align: center;
+    }
+
+    th:nth-child(2),
+    th:nth-child(3),
+    th:nth-child(4) {
+      text-align: center;
+    }
+
+    .summary-row {
+      background: #e8f0fe;
+      font-weight: 700;
+      border-top: 2px solid #1a1a2e;
+      border-bottom: 2px solid #1a1a2e;
+    }
+    
+
+    .summary-row td {
+      padding: 16px 18px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="#" class="active">Dashboard</a>
+    <a href="#"> Reports</a>
+    <a href="#"> Finance</a>
+    <a href="#"> Users</a>
+    <a href="#"> Settings</a>
+  </nav>
+
+  <div class="container">
+    <h1>Financial Summary Report</h1>
+
+    <table>
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Income (₦)</th>
+          <th>Expenses (₦)</th>
+          <th>Balance (₦)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Product Sales</td>
+          <td>1,250,000</td>
+          <td>320,000</td>
+          <td>930,000</td>
+        </tr>
+        <tr>
+          <td>Service Revenue</td>
+          <td>780,000</td>
+          <td>150,000</td>
+          <td>630,000</td>
+        </tr>
+        <tr>
+          <td>Subscriptions</td>
+          <td>450,000</td>
+          <td>80,000</td>
+          <td>370,000</td>
+        </tr>
+        <tr>
+          <td>Operations</td>
+          <td>0</td>
+          <td>210,000</td>
+          <td>-210,000</td>
+        </tr>
+
+        <tr class="summary-row">
+          <td>Total</td>
+          <td>2,480,000</td>
+          <td>760,000</td>
+          <td>1,720,000</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>

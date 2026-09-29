@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Profile</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #e8f0fe);
+      color: #333;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.6rem;
+      color: #1a73e8;
+      margin-bottom: 10px;
+    }
+
+    .underline {
+      width: 120px;
+      height: 5px;
+      background: linear-gradient(to right, #1a73e8, #34a853);
+      margin: 0 auto;
+      border-radius: 10px;
+    }
+
+    /* Profile Card */
+    .profile-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 35px;
+      display: flex;
+      align-items: center;
+      gap: 30px;
+      padding: 30px;
+    }
+
+    .profile-card img {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 5px solid #1a73e8;
+    }
+
+    .profile-info h2 {
+      font-size: 1.8rem;
+      color: #1a73e8;
+      margin-bottom: 8px;
+    }
+
+    .profile-info p {
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 6px;
+    }
+
+    .profile-info a {
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .profile-info a:hover {
+      text-decoration: underline;
+    }
+
+    /* Section Cards */
+    .section {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      padding: 28px 30px;
+      margin-bottom: 30px;
+    }
+
+    .section h2 {
+      font-size: 1.5rem;
+      color: #1a73e8;
+      margin-bottom: 15px;
+      border-left: 5px solid #1a73e8;
+      padding-left: 12px;
+    }
+
+    .section p {
+      font-size: 1.08rem;
+      color: #444;
+      margin-bottom: 12px;
+    }
+
+    /* Interests */
+    .interest-box {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      background: #f8fafc;
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 15px;
+    }
+
+    .interest-box img {
+      width: 90px;
+      height: 90px;
+    }
+
+    /* Links Section */
+    .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .links a {
+      background: #1a73e8;
+      color: white;
+      text-decoration: none;
+      padding: 12px 22px;
+      border-radius: 50px;
+      font-weight: 500;
+      transition: background 0.3s ease;
+    }
+
+    .links a:hover {
+      background: #1557b0;
+    }
+
+    /* Motivational Quote */
+    .quote {
+      text-align: center;
+      background: linear-gradient(135deg, #1a73e8, #34a853);
+      color: white;
+      padding: 25px;
+      border-radius: 16px;
+      font-size: 1.3rem;
+      font-weight: 600;
+      margin-bottom: 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 30px;
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .profile-card {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .interest-box {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>My Personal Profile</h1>
+      <div class="underline"></div>
+    </header>
+
+    <!-- Profile Card -->
+    <div class="profile-card">
+      <!-- Replace the src below with your real picture path if needed -->
+      <img src="my 1st.jpeg" alt="Olumide Timothy Ojo">
+      
+      <div class="profile-info">
+        <h2>Olumide Timothy Ojo</h2>
+        <p>Student at <a href="My School 3 .html"><strong>OIC Hub</strong></a></p>
+        <p>Currently studying <strong>Full Stack Web Development</strong></p>
+        <p>Background: Business Administration (OSPOLY Iree)</p>
+      </div>
+    </div>
+
+    <!-- About Me -->
+    <div class="section">
+      <h2>About Me</h2>
+      <p>
+        My name is <strong>Olumide Timothy Ojo</strong>. I am a student of 
+        <a href="My School 3 .html" style="color:#1a73e8; font-weight:600;">OIC Hub</a>, 
+        currently studying Full Stack Web Development.
+      </p>
+    </div>
+
+    <!-- Introduction -->r
+    <div class="section">
+      <h2>Introduction</h2>
+      <p>
+        I'm a farmer with a strong interest in technology and a background in Business Administration from OSPOLY Iree. 
+        I'm currently learning full-stack web development, starting with HTML, and building my skills step by step.
+      </p>
+      <p>
+        I enjoy solving problems, staying optimistic, and combining practical real-world experience with new digital skills. 
+        My goal is to become a capable full-stack developer who can create useful web applications.
+      </p>
+      <p>
+        Outside of coding, I value continuous learning and finding smart ways to grow both on the farm and in tech.
+      </p>
+    </div>
+
+    <!-- My Interests -->
+    <div class="section">
+      <h2>My Interests</h2>
+      <div class="interest-box">
+        <img src="https://play-lh.googleusercontent.com/JauranxwFAASQTa-pc7tIs73zNt7lzUjjlCCWujcNELSCzSUzzKM__zaM8FZjWET3ULNEiqeR1vg_lxAAPPK" alt="Football">
+        <div>
+          <p>
+            Apart from school, I also enjoy <strong>Football</strong>.
+          </p>
+          <p>
+            I like to play and watch football because the control, vision, speed, and creativity of top players are genuinely impressive to watch.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Motivational Quote -->
+    <div class="quote">
+      I love my life and I never give up
+    </div>
+
+    <!-- Links -->
+    <div class="section">
+      <h2>Quick Links</h2>
+      <div class="links">
+        <a href="About me 1.html" target="_blank">About Me</a>
+        <a href="My School 3 .html" target="_blank">OIC Hub</a>
+        <a href="my-course.html" target="_blank">My Course</a>
+        <a href="#12">Back to Top</a>
+      </div>
+    </div>
+
+    <footer>
+      © 2026 · Olumide Timothy Ojo · Personal Profile
+    </footer>
+
+  </div>
+
+</body>
+</html>

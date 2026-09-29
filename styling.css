@@ -1,0 +1,17 @@
+body { background-image:url(background.jpg) ;
+    border: 10px dashed blue;
+    padding: 5%;
+    background-repeat: no-repeat;
+    background-image: contain;
+    background-position: right top;
+    background-size: 30%;
+    background-attachment:fixed;
+    background-origin: border-box, padding-box
+
+}
+
+h1{ background-color: aquamarine; 
+ 
+
+
+}

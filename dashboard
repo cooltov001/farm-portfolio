@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DASHBOARD</title>
+</head>
+<body>
+    <div class="page-wrapper">  
+    <div class="border-container" >
+    <div class="left-panel">
+    <div class="logo-selection">
+    <div style="width:55px; height: 55px; margin: 0 auto 8px ; background: #0d47a1; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: beige; font-weight: bold; font-size: 20px;"> CoolTOV</div>
+    <div class="cooltov"> Cooltov is the best</div>
+    <h1>CoolTOV fanbse</h1>
+    <div class="tagline">Learning coding for more Wisdom and knowledge exposure</div>
+    </div>
+
+    <div class="nav-button">
+        <button class="nav-btn"> Official WEbsite </button>
+        <button class="nav-btn"> Portal Home </button>
+        <button class="nav-btn" > Registration Instructions </button>
+        <button class="nav-btn"> Help Desk</button>
+
+    </div>
+
+    <div class="right-panel">
+        <h2>Cooltov Students Portal </h2>
+
+        <form >
+            <div> </div>
+
+
+        </form>
+
+        
+
+        
+        
+        
+        
+
+
+
+
+
+
+
+
+    </div>
+    
+</body>
+</html>

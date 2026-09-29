@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Gradebook Table</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #222;
+    }
+
+    table {
+      width: 90%;
+      max-width: 1000px;
+      margin: 0 auto;                    
+      border-collapse: collapse;         
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+
+    th {
+      background: #1a1a2e;              
+      color: #ffffff;                    
+      padding: 14px 16px;
+      text-align: left;
+    }
+
+    td {
+      padding: 14px 16px;               
+      border-bottom: 1px solid #ddd;
+    }
+
+    td:nth-child(1),
+    td:nth-child(2) {
+      text-align: left;
+    }
+
+    td:nth-child(3),
+    td:nth-child(4),
+    td:nth-child(5) {
+      text-align: center;
+    }
+
+    tr:nth-child(even) {
+      background: #f8f9fa;
+    }
+
+    tr:hover {
+      background: #e3f2fd;
+    }
+
+    .status {
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 50px;             
+      font-size: 0.85rem;
+      font-weight: 600;
+    }
+
+    .passed {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .failed {
+      background: #f8d7da;
+      color: #721c24;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Student Gradebook</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Student Name</th>
+        <th>Subject</th>
+        <th>Score</th>
+        <th>Grade</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Adebayo Okonkwo</td>
+        <td>Mathematics</td>
+        <td>85</td>
+        <td>A</td>
+        <td><span class="status passed">Passed</span></td>
+      </tr>
+      <tr>
+        <td>Chioma Eze</td>
+        <td>English</td>
+        <td>72</td>
+        <td>B</td>
+        <td><span class="status passed">Passed</span></td>
+      </tr>
+      <tr>
+        <td>Tunde Bakare</td>
+        <td>Physics</td>
+        <td>45</td>
+        <td>F</td>
+        <td><span class="status failed">Failed</span></td>
+      </tr>
+      <tr>
+        <td>Ngozi Okafor</td>
+        <td>Chemistry</td>
+        <td>91</td>
+        <td>A</td>
+        <td><span class="status passed">Passed</span></td>
+      </tr>
+      <tr>
+        <td>Emeka Nwosu</td>
+        <td>Biology</td>
+        <td>38</td>
+        <td>F</td>
+        <td><span class="status failed">Failed</span></td>
+      </tr>
+      <tr>
+        <td>Fatima Bello</td>
+        <td>Economics</td>
+        <td>67</td>
+        <td>C</td>
+        <td><span class="status passed">Passed</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+</body>
+</html>

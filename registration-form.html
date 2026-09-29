@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Student Seminar Registration Form</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea, #764ba2);
+      min-height: 100vh;
+      padding: 40px 20px;
+      color: #333;
+    }
+
+    .container {
+      max-width: 750px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+      overflow: hidden;
+    }
+
+    /* Header */
+    .header {
+      background: linear-gradient(135deg, #8fe42f, #3a6aedd7);
+      color: white;
+      text-align: center;
+      padding: 35px 25px;
+      position: relative;
+    }
+
+    .header img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      border: 4px solid white;
+      margin-bottom: 15px;
+      object-fit: cover;
+    }
+
+    .header h1 {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .header p {
+      opacity: 0.9;
+      font-size: 1.05rem;
+    }
+
+    /* Form */
+    form {
+      padding: 40px 35px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="tel"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 10px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      background: #f9fafb;
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: none;
+      border-color: #6366f1;
+      background: white;
+      box-shadow: 0 0 0 4px rgba(99, 102, 241, 0.15);
+    }
+
+    /* Gender */
+    .gender-group {
+      display: flex;
+      gap: 25px;
+      margin-top: 8px;
+    }
+
+    .gender-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Hobbies */
+    fieldset {
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 25px;
+    }
+
+    legend {
+      padding: 0 12px;
+      font-weight: 600;
+      color: #4f46e5;
+    }
+
+    .hobbies {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+      margin-top: 10px;
+    }
+
+    .hobbies label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    /* Media Section */
+    .media-section {
+      background: #f8fafc;
+      border-radius: 14px;
+      padding: 25px;
+      margin: 30px 0;
+      border: 1px solid #e2e8f0;
+    }
+
+    .media-section h3 {
+      color: #4f46e5;
+      margin-bottom: 15px;
+      font-size: 1.2rem;
+    }
+
+    audio, video, iframe {
+      width: 100%;
+      border-radius: 10px;
+      margin-bottom: 15px;
+    }
+
+    video {
+      max-height: 280px;
+      background: #000;
+    }
+
+    /* Buttons */
+    .buttons {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+
+    button {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(135deg, #4f46e5, #7c3aed);
+      color: white;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(79, 70, 229, 0.4);
+    }
+
+    button[type="reset"] {
+      background: #e5e7eb;
+      color: #374151;
+    }
+
+    button[type="reset"]:hover {
+      background: #d1d5db;
+    }
+
+    footer {
+      text-align: center;
+      padding: 18px;
+      background: #f1f5f9;
+      color: #64748b;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .header h1 {
+        font-size: 1.6rem;
+      }
+
+      form {
+        padding: 25px 20px;
+      }
+
+      .hobbies {
+        grid-template-columns: 1fr;
+      }
+
+      .gender-group {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .buttons {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <div class="header">
+      <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=200" alt="Seminar">
+      <h1>Student Seminar Registration</h1>
+      <p>Fill the form below to register for the seminar</p>
+    </div>
+
+    <form>
+      <!-- Name -->
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input type="text" id="name" name="name" maxlength="40" placeholder="Enter your full name" required>
+      </div>
+
+      <!-- Email -->
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" name="email" placeholder="yourname@email.com" required>
+      </div>
+
+      <!-- Password -->
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="Create a password" required>
+      </div>
+
+      <!-- Phone -->
+      <div class="form-group">
+        <label for="phone">Phone Number</label>
+        <input type="tel" id="phone" name="phone" placeholder="e.g. 0801 234 5678" required>
+      </div>
+
+      <!-- Date of Birth -->
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" name="dob" required>
+      </div>
+
+      <!-- Gender -->
+      <div class="form-group">
+        <label>Gender</label>
+        <div class="gender-group">
+          <label>
+            <input type="radio" name="gender" value="Male"> Male
+          </label>
+          <label>
+            <input type="radio" name="gender" value="Female"> Female
+          </label>
+          <label>
+            <input type="radio" name="gender" value="Others"> Others
+          </label>
+        </div>
+      </div>
+
+      <!-- State -->
+      <div class="form-group">
+        <label for="state">Choose State</label>
+        <select id="state" name="state" required>
+          <option value="">-- Select a state --</option>
+          <option value="OS">Osun</option>
+          <option value="OG">Ogun</option>
+          <option value="LA">Lagos</option>
+          <option value="OD">Ondo</option>
+          <option value="EK">Ekiti</option>
+          <option value="AK">Akwa-Ibom</option>
+          <option value="OY">Oyo</option>
+          <option value="KW">Kwara</option>
+          <option value="ED">Edo</option>
+          <option value="AB">Abia</option>
+          <option value="IM">Imo</option>
+          <option value="KD">Kaduna</option>
+          <option value="KN">Kano</option>
+          <option value="KT">Katsina</option>
+          <option value="EN">Enugu</option>
+          <option value="AD">Adamawa</option>
+          <option value="RV">Rivers</option>
+          <option value="SO">Sokoto</option>
+          <option value="TA">Taraba</option>
+          <option value="BA">Bauchi</option>
+          <option value="BO">Borno</option>
+          <option value="DE">Delta</option>
+          <option value="KO">Kogi</option>
+          <option value="NI">Niger</option>
+          <option value="CR">Cross River</option>
+          <option value="PL">Plateau</option>
+          <option value="GO">Gombe</option>
+          <option value="FCT">FCT</option>
+        </select>
+      </div>
+
+      <!-- Hobbies -->
+      <fieldset>
+        <legend>Hobbies</legend>
+        <div class="hobbies">
+          <label><input type="checkbox" name="hobbies" value="Football"> Football</label>
+          <label><input type="checkbox" name="hobbies" value="Music"> Music</label>
+          <label><input type="checkbox" name="hobbies" value="Reading"> Reading</label>
+          <label><input type="checkbox" name="hobbies" value="Coding"> Coding</label>
+        </div>
+      </fieldset>
+
+      <!-- Address -->
+      <div class="form-group">
+        <label for="address">Address</label>
+        <textarea id="address" name="address" rows="4" placeholder="Enter your full address"></textarea>
+      </div>
+
+    
+
+      <!-- Buttons -->
+      <div class="buttons">
+        <button type="submit">Submit Registration</button>
+        <button type="reset">Reset Form</button>
+      </div>
+    </form>
+
+    <footer>
+      © 2026 Student Seminar Registration • All Rights Reserved
+    </footer>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Campus Central Library - Book Reservation</title>
+  <link rel="icon" href="https://thumbs.dreamstime.com/z/education-logo-library-vector-university-223144385.jpg">
+</head>
+<body>
+
+    <h1 style="color: brown;">Campus Central Library</h1>
+    <h2 style="color: blue;">Digital Access & Resource Booking</h2>
+
+    <nav>
+      <ul>
+        <li><a href="#catalog">Catalog</a></li>
+        <li><a href="#rules">Rules</a></li>
+        <li><a href="#book-request">Book Request</a></li>
+      </ul>
+    </nav>
+
+    <img 
+      src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?w=800" width="400"
+      alt="Interior view of Campus Central Library showing rows of bookshelves and a quiet reading area with wooden tables and chairs">
+  </header>
+
+  <!-- ========== PART 2: New Arrivals Table ========== -->
+  <section id="catalog">
+    <h2>New Arrivals</h2>
+    <p>Recently cataloged resources available in the library:</p>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Book Title</th>
+          <th>Author</th>
+          <th>Category</th>
+          <th>Availability</th>
+        </tr>
+      </thead>
+      <br>
+
+      <tbody>
+        <tr>
+          <td>Introduction to Algorithms</td>
+          <td>Cormen et al.</td>
+          <td>Computer Science</td>
+          <td>Available</td>
+        </tr>
+        <br>
+        <tr>
+          <td>Modern Operating Systems</td>
+          <td>Andrew S. Tanenbaum</td>
+          <td>Software Engineering</td>
+          <td>Checked Out</td>
+        </tr>
+        <tr>
+          <td>Clean Code</td>
+          <td>Robert C. Martin</td>
+          <td>Software Engineering</td>
+          <td>Available</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- ========== PART 3: Rules & Borrowing Process ========== -->
+  <section id="rules">
+    <h2>Rules & Borrowing Process</h2>
+
+    <h3>Core Library Rules</h3>
+    <ul>
+      <li>Silent reading zone must be observed at all times</li>
+      <li>No food or drinks allowed inside the library</li>
+      <li>Maximum of 3 books may be borrowed at a time</li>
+    </ul>
+
+    <h3>How to Borrow a Physical Book</h3>
+    <ol>
+      <li>Search the catalog for the desired book</li>
+      <li>Submit a reservation request online</li>
+      <li>Pick up the book at the front desk with your Student ID</li>
+    </ol>
+  </section>
+
+  <!-- ========== PART 4: Book Reservation Form ========== -->
+  <section id="book-request">
+    <h2>Book Reservation Form</h2>
+
+    <form action="#" method="post">
+
+      <!-- Full Name -->
+      <label for="fullnamename">Student's  Name:</label><br>
+      <input type="text" id="fullnamename" name="fullnamename" required placeholder="Input full name"><br><br>
+
+      <!-- Institutional Email -->
+      <label for="email">Institutional Email Address:</label><br>
+      <input type="email" id="email" name="email" 
+             placeholder="student@university.edu" required><br><br>
+
+      <!-- User Role (Radio buttons) -->
+      <p>User Role:</p>
+      <input type="radio" id="undergrad" name="role" value="Undergraduate" required>
+      <label for="undergrad">Undergraduate</label><br>
+
+      <input type="radio" id="postgrad" name="role" value="Postgraduate">
+      <label for="postgrad">Postgraduate</label><br><br>
+
+      <!-- Preferred Communication (Checkboxes) -->
+      <p>Preferred Communication Channels:</p>
+      <input type="checkbox" id="email-alert" name="communication" value="Email Alert">
+      <label for="email-alert">Email Alert</label><br>
+
+      <input type="checkbox" id="sms" name="communication" value="SMS Notification">
+      <label for="sms">SMS Notification</label><br><br>
+
+      <!-- Loan Duration (Dropdown) -->
+      <label for="duration">Loan Duration:</label><br>
+      <select id="duration" name="duration" required>
+        <option value="">-- Select duration --</option>
+        <option value="3 Days">3 Days</option>
+        <option value="7 Days">7 Days</option>
+        <option value="14 Days">14 Days</option>
+      </select><br><br>
+
+      <!-- Additional Details (Textarea) -->
+      <label for="details">Additional Book Details or Specific Edition Requests:</label><br>
+      <textarea id="details" name="details" rows="5" cols="40" 
+                placeholder="Enter any special requests here..."></textarea><br><br>
+
+      <!-- Submit Button -->
+      <button type="submit">Submit Reservation Request</button>
+
+    </form>
+  </section>
+
+  <!-- ========== PART 5: Footer & Terms Link ========== -->
+  <hr>
+
+  <footer>
+    <p>&copy; 2026 Campus Central Library. All rights reserved.</p>
+    <p>
+      <a href="https://library.uniosun.edu.ng/" target="_blank" rel="noopener">
+        View Library Policy &amp; Copyright Guidelines
+      </a>
+    </p>
+  </footer>
+
+</body>
+</html>

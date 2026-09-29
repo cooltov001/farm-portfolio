@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gymso Fitness</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #111;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .navbar {
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 25px 60px;
+      background: transparent;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      color: #fff;
+      text-decoration: none;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 35px;
+    }
+
+    .nav-links a {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: #f44336; 
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 18px;
+    }
+
+    .social-icons a {
+      color: #fff;
+      font-size: 16px;
+      transition: color 0.3s;
+    }
+
+    .social-icons a:hover {
+      color: #f44336;
+    }
+
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 700px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      background: 
+        linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.75)),
+        url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?auto=format&fit=crop&w=1920&q=80') 
+        center/cover no-repeat;
+    }
+
+    .hero-content {
+      max-width: 900px;
+      padding: 0 20px;
+      z-index: 2;
+    }
+
+    .hero-subtitle {
+      font-size: 18px;
+      font-weight: 400;
+      color: #ccc;
+      margin-bottom: 20px;
+      letter-spacing: 1px;
+    }
+
+    .hero-title {
+      font-size: 64px;
+      font-weight: 800;
+      line-height: 1.15;
+      margin-bottom: 40px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .btn-text {
+      color: #fff;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .btn-text:hover {
+      color: #f44336;
+    }
+
+    .btn-outline {
+      display: inline-block;
+      padding: 14px 32px;
+      border: 2px solid #f44336;
+      color: #f44336;
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      transition: all 0.3s;
+    }
+
+    .btn-outline:hover {
+      background: #f44336;
+      color: #fff;
+    }
+
+  
+    
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <a href="#" class="logo">Gymso Fitness</a>
+
+    <ul class="nav-links">
+      <li><a href="#" class="active">HOME</a></li>
+      <li><a href="#">ABOUT US</a></li>
+      <li><a href="#">CLASSES</a></li>
+      <li><a href="#">SCHEDULES</a></li>
+      <li><a href="#">CONTACT</a></li>
+    </ul>
+
+    <div class="social-icons">
+      <a href="#"><i class="fab fa-facebook-f"></i></a>
+      <a href="#"><i class="fab fa-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-subtitle">new way to build a healthy lifestyle!</p>
+      <h1 class="hero-title">UPGRADE YOUR BODY AT<br>GYMSO FITNESS</h1>
+      
+      <div class="hero-buttons">
+        <a href="#" class="btn-text">GET STARTED</a>
+        <a href="#" class="btn-outline">LEARN MORE</a>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>

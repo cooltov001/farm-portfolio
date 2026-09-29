@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My School - OIC Hub</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f0f4f8, #e8f0fe);
+      color: #333;
+      line-height: 1.7;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    header h1 {
+      font-size: 2.8rem;
+      color: #1a73e8;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .underline {
+      width: 100px;
+      height: 5px;
+      background: linear-gradient(to right, #1a73e8, #34a853);
+      margin: 0 auto 20px;
+      border-radius: 10px;
+    }
+
+    /* Main Card */
+    .main-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      margin-bottom: 35px;
+    }
+
+    .main-card img.school-img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+    }
+
+    .main-content {
+      padding: 30px;
+    }
+
+    .main-content h2 {
+      font-size: 2rem;
+      color: #1a73e8;
+      margin-bottom: 15px;
+    }
+
+    .main-content p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+      color: #444;
+    }
+
+    /* Info Cards */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 25px;
+      margin-bottom: 35px;
+    }
+
+    .info-card {
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .info-card:hover {
+      transform: translateY(-6px);
+    }
+
+    .info-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .info-card .content {
+      padding: 20px;
+    }
+
+    .info-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 8px;
+      color: #222;
+    }
+
+    .info-card p {
+      color: #555;
+      font-size: 1.05rem;
+    }
+
+    .highlight {
+      color: #e63946;
+      font-weight: 600;
+    }
+
+    /* Course Section */
+    .course-box {
+      background: white;
+      border-radius: 16px;
+      padding: 25px 30px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      margin-bottom: 35px;
+      border-left: 6px solid #1a73e8;
+    }
+
+    .course-box h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      color: #1a73e8;
+    }
+
+    .course-box p {
+      font-size: 1.15rem;
+      margin-bottom: 8px;
+    }
+
+    /* Link & Quote */
+    .bottom-section {
+      text-align: center;
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .bottom-section a {
+      display: inline-block;
+      background: #1a73e8;
+      color: white;
+      text-decoration: none;
+      padding: 12px 28px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      transition: background 0.3s ease;
+    }
+
+    .bottom-section a:hover {
+      background: #1557b0;
+    }
+
+    .bottom-section em,
+    .bottom-section i {
+      display: block;
+      color: #555;
+      font-size: 1.1rem;
+      margin-top: 8px;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      color: #777;
+      font-size: 0.95rem;
+    }
+
+    /* Responsive */
+    @media (max-width: 700px) {
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .main-card img.school-img {
+        height: 200px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+
+    <!-- Header -->
+    <header>
+      <h1>MY SCHOOL</h1>
+      <div class="underline"></div>
+    </header>
+
+    <!-- Main School Card -->
+    <div class="main-card">
+      <img class="school-img" 
+           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSfCyDWHilGcF5w5ew9NNwq3pbGqlt66fbGoYPAId8lWlrL_-FaHGkbe0Y&s=10" 
+           alt="OIC Hub Building">
+      <div class="main-content">
+        <h2>OIC HUB</h2>
+        <p>
+          <strong>OIC Hub Osogbo</strong> is an IT consulting company and coding training institute based in Osogbo, Osun State, Nigeria.
+        </p>
+        <p>
+          It offers practical, hands-on training in web development (frontend, backend, and full-stack), data science, data analysis, 
+          AI/machine learning, UI/UX design, mobile and desktop app development, and basic computer skills.
+        </p>
+        <p>
+          The hub also provides software development services for businesses and runs coding programs for children and students.
+        </p>
+        <p>
+          <strong>Location:</strong> 2, Adekunle Square, beside Ebenezer Hotel, Fagbewesa Street, Olaiya, Osogbo.
+          It focuses on equipping people with in-demand digital skills through physical, project-based learning.
+        </p>
+      </div>
+    </div>
+
+    <!-- Info Cards -->
+    <div class="info-grid">
+      <div class="info-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTe5pSCTYI5k9C5ksdKPQqMQibZ9pC1JYAkHT54liZV7_-LqRugt9OoqA&s=10" alt="Coding Class">
+        <div class="content">
+          <h3>Hands-on Training</h3>
+          <p>Practical project-based learning that prepares students for real-world tech jobs.</p>
+        </div>
+      </div>
+
+      <div class="info-card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSdV82RHr0ddF8QBQ4Ir1ZpdW03ioIaOXoV-4jOfjQr2zZ278VOceigpA_2&s=10" alt="Students Learning">
+        <div class="content">
+          <h3>Modern Skills</h3>
+          <p>Learn Web Development, Data Science, AI, UI/UX, and Mobile App Development.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Course Box -->
+    <div class="course-box">
+      <h3>My Current Course</h3>
+      <p><strong>Course:</strong> <span class="highlight">Full Stack Web Development</span></p>
+      <p><strong>Department:</strong> <span class="highlight">CSS</span></p>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+      <a href="https://ng.linkedin.com/company/oichubltd" target="_blank">Visit OIC Hub on LinkedIn</a>
+      <em>I like this school</em>
+      <i>Yes, I'm liking it!</i>
+    </div>
+
+    <footer>
+      © 2026 · My School - OIC Hub Osogbo
+    </footer>
+
+  </div>
+
+</body>
+</html>

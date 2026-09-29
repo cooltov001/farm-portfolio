@@ -1,0 +1,551 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CoolTOV Delicious Bites | Restaurant</title>
+  <link rel="icon" href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRONqWh8yqAzFeBa7GzHuMnaaTlIATxSpa098riGQc4ZgnfQqkQwsQ6G68&s=10">
+  
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: #5b613b;
+      color: #8e3fe791;
+      line-height: 1.6;
+    }
+
+    /* Hero Header */
+    .hero {
+      height: 420px;
+      background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), 
+                  url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: rgb(160, 121, 121);
+    }
+
+    .hero-content h1 {
+      font-size: 3.4rem;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.5);
+    }
+
+    .hero-content p {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      margin-bottom: 25px;
+    }
+
+    .hero-badge {
+      display: inline-block;
+      background: #e63946;
+      color: white;
+      padding: 8px 22px;
+      border-radius: 50px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: -60px auto 40px;
+      padding: 0 20px;
+      position: relative;
+      z-index: 10;
+    }
+
+    .menu-section, .order-section, .contact-section {
+      background: white;
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      margin-bottom: 40px;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: #1a1a1a;
+      margin-bottom: 8px;
+    }
+
+    .section-title p {
+      color: #777;
+    }
+
+    /* Menu Grid */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+      transition: transform 0.3s;
+      border: 1px solid #f0f0f0;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+    }
+
+    .menu-card-content {
+      padding: 20px;
+    }
+
+    .menu-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .menu-card p {
+      color: #666;
+      font-size: 0.95rem;
+      margin-bottom: 15px;
+    }
+
+    .price {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .price span {
+      font-size: 1.3rem;
+      font-weight: 700;
+      color: #e63946;
+    }
+
+    .price .tag {
+      background: #fff0f0;
+      color: #e63946;
+      font-size: 0.8rem;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-weight: 600;
+    }
+
+    /* Order Section */
+    .order-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 40px;
+    }
+
+    form label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 7px;
+      font-size: 0.95rem;
+    }
+
+    form input,
+    form select,
+    form textarea {
+      width: 100%;
+      padding: 13px 16px;
+      border: 2px solid #eee;
+      border-radius: 10px;
+      font-size: 1rem;
+      margin-bottom: 18px;
+      background: #fafafa;
+    }
+
+    form input:focus,
+    form select:focus,
+    form textarea:focus {
+      outline: none;
+      border-color: #e63946;
+      background: white;
+    }
+
+    .radio-group {
+      display: flex;
+      gap: 25px;
+      margin-bottom: 20px;
+    }
+
+    .radio-group label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-weight: 500;
+      cursor: pointer;
+    }
+
+    .btn-group {
+      display: flex;
+      gap: 15px;
+    }
+
+    button {
+      padding: 14px 32px;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    button[type="submit"] {
+      background: linear-gradient(135deg, #e63946, #ff6b35);
+      color: white;
+      flex: 1;
+    }
+
+    button[type="submit"]:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(230, 57, 70, 0.35);
+    }
+
+    button[type="reset"] {
+      background: #f0f0f0;
+      color: #555;
+    }
+
+    .side-info {
+      background: linear-gradient(135deg, #1a1a1a, #333);
+      color: white;
+      border-radius: 16px;
+      padding: 30px;
+    }
+
+    .side-info h3 {
+      color: #ff6b35;
+      margin-bottom: 20px;
+    }
+
+    .side-info ul {
+      list-style: none;
+      margin-bottom: 20px;
+    }
+
+    .side-info li {
+      padding: 10px 0;
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Contact Section */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 25px;
+    }
+
+    .contact-card {
+      background: #f9f9f9;
+      border-radius: 14px;
+      padding: 25px;
+      text-align: center;
+      border: 1px solid #eee;
+    }
+
+    .contact-card .icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .contact-card h3 {
+      font-size: 1.15rem;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .contact-card p {
+      color: #555;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+
+    .contact-card a {
+      color: #e63946;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    /* Gallery */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 12px;
+      margin-bottom: 40px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 140px;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    footer {
+      background: #111;
+      color: #aaa;
+      text-align: center;
+      padding: 30px 20px;
+    }
+
+    footer strong {
+      color: #e63946;
+    }
+
+    @media (max-width: 800px) {
+      .hero-content h1 {
+        font-size: 2.3rem;
+      }
+      .order-grid {
+        grid-template-columns: 1fr;
+      }
+      .gallery {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CoolTOV Delicious Bites</h1>
+      <p>Premium taste • Fresh ingredients • Fast service</p>
+      <div class="hero-badge">Now Accepting Online Orders</div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Menu -->
+    <div class="menu-section">
+      <div class="section-title">
+        <h2>Our Signature Menu</h2>
+        <p>Handcrafted dishes made with the finest local ingredients</p>
+      </div>
+
+      <div class="menu-grid">
+        <div class="menu-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRGj1ju3QL8gUK1E3r7ZHKRSl9OCv1JVcTTTd9Aqk2pgxe6mImbWoDG8yQ&s=10" alt="Jollof">
+          <div class="menu-card-content">
+            <h3>Jollof Rice Special</h3>
+            <p>Spicy party jollof with tender chicken and sweet fried plantain.</p>
+            <div class="price">
+              <span>₦3,500</span>
+              <div class="tag">Popular</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="https://ikneadtoeat.com/wp-content/uploads/2022/11/grilled-chicken-steak-5.jpg" alt="Chicken">
+          <div class="menu-card-content">
+            <h3>Grilled Chicken</h3>
+            <p>Marinated grilled chicken served with crispy fries and sauce.</p>
+            <div class="price">
+              <span>₦4,200</span>
+              <div class="tag">Chef’s Choice</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRin0t3zCk6bibhggxrxTBj4X_GE0pZQEy9u4SvJb8xHGl85cJdNe5JjeY&s=10" alt="Pasta">
+          <div class="menu-card-content">
+            <h3>Pasta Alfredo</h3>
+            <p>Creamy Alfredo pasta with mushrooms and parmesan.</p>
+            <div class="price">
+              <span>₦3,800</span>
+              <div class="tag">Creamy</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="https://feelgoodfoodie.net/wp-content/uploads/2020/07/Homemade-Hamburgers-TIMG.jpg" alt="Burger">
+          <div class="menu-card-content">
+            <h3>Beef Burger</h3>
+            <p>Juicy beef patty with fresh veggies and special sauce.</p>
+            <div class="price">
+              <span>₦2,900</span>
+              <div class="tag">Best Seller</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="menu-card">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQQzWVwSUyNRVG9-FTJVapEdNXwaODLSs_KzDe9riokj_MilkTIcTSrg87j&s=10" alt="Chapman">
+          <div class="menu-card-content">
+            <h3>Chapman Drink</h3>
+            <p>Refreshing Nigerian mocktail with a fruity twist.</p>
+            <div class="price">
+              <span>₦1,500</span>
+              <div class="tag">Refreshing</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <div class="gallery">
+      <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=400" alt="">
+      <img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=400" alt="">
+      <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=400" alt="">
+      <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400" alt="">
+      <img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?w=400" alt="">
+    </div>
+
+    <!-- Order Form -->
+    <div class="order-section">
+      <div class="section-title">
+        <h2>Place Your Order</h2>
+        <p>Fill the form below and we’ll get your meal ready</p>
+      </div>
+
+      <div class="order-grid">
+        <form>
+          <label>Full Name</label>
+          <input type="text" required placeholder="Enter your full name">
+
+          <label>Phone Number</label>
+          <input type="tel" required placeholder="e.g. 0801 234 5678">
+
+          <label>Email Address</label>
+          <input type="email" required placeholder="yourname@email.com">
+
+          <div class="radio-group">
+            <label><input type="radio" name="ordertype" value="Dine-in"> Dine-in</label>
+            <label><input type="radio" name="ordertype" value="Takeout"> Takeout</label>
+          </div>
+
+          <label>Pickup Time / Location</label>
+          <select>
+            <option value="">-- Select an option --</option>
+            <option>12:00 PM – Stadium Branch</option>
+            <option>1:00 PM – Olaiya Branch</option>
+            <option>2:00 PM – Oke-Ayepe Branch</option>
+            <option>3:00 PM – Ede Branch</option>
+            <option>4:00 PM – Estate Branch</option>
+          </select>
+
+          <label>Special Instructions</label>
+          <textarea rows="3" placeholder="E.g. No pepper, extra sauce..."></textarea>
+
+          <div class="btn-group">
+            <button type="submit">Submit Order</button>
+            <button type="reset">Reset</button>
+          </div>
+        </form>
+
+        <div class="side-info">
+          <h3>Why CoolTOV?</h3>
+          <ul>
+            <li>🔥 Freshly prepared meals</li>
+            <li>⚡ Fast preparation time</li>
+            <li>🌿 Quality ingredients</li>
+            <li>📍 Multiple pickup locations</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- ========== CONTACT & ADDRESS SECTION ========== -->
+    <div class="contact-section">
+      <div class="section-title">
+        <h2>Find Us & Contact</h2>
+        <p>We would love to serve you</p>
+      </div>
+
+      <div class="contact-grid">
+
+        <!-- Address -->
+        <div class="contact-card">
+          <div class="icon">📍</div>
+          <h3>Our Address</h3>
+          <p>
+            CoolTOV Delicious Bites<br>
+            <!-- Edit this address -->
+            15, Example Street, Opposite Example Plaza,<br>
+            Osogbo, Osun State, Nigeria
+          </p>
+        </div>
+
+        <!-- Phone -->
+        <div class="contact-card">
+          <div class="icon">📞</div>
+          <h3>Phone Number</h3>
+          <p>
+            <!-- Edit these numbers -->
+            <a href="tel:+2348012345678">+234 801 234 5678</a><br>
+            <a href="tel:+2348098765432">+234 809 876 5432</a>
+          </p>
+        </div>
+
+        <!-- WhatsApp / Email -->
+        <div class="contact-card">
+          <div class="icon">💬</div>
+          <h3>WhatsApp & Email</h3>
+          <p>
+            <!-- Edit these -->
+            <a href="https://wa.me/2348012345678" target="_blank">Chat on WhatsApp</a><br>
+            <a href="mailto:info@cooltov.com">info@cooltov.com</a>
+          </p>
+        </div>
+
+        <!-- Opening Hours -->
+        <div class="contact-card">
+          <div class="icon">🕒</div>
+          <h3>Opening Hours</h3>
+          <p>
+            Monday – Saturday<br>
+            10:00 AM – 9:00 PM<br>
+            Sunday: 12:00 PM – 6:00 PM
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 <strong>CoolTOV Delicious Bites</strong> • All Rights Reserved</p>
+    <p style="margin-top: 8px; font-size: 0.9rem;">Premium taste, every single time.</p>
+  </footer>
+
+</body>
+</html>
+```
+
+### What I added (easy for you to edit later):
+
+- **Address** → Change the street and location  
+- **Phone numbers** → Replace with your real numbers  
+- **WhatsApp link** → Change the number in `wa.me/`  
+- **Email** → Change to your real email  
+- **Opening Hours** → Adjust the times if needed  
+
+Just search for the comments `<!-- Edit this -->` in the code and replace the placeholder text with your real details.

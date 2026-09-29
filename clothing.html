@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Clothing | Luxe Scent & Style</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', sans-serif; background: #f8f6f4; color: #333; }
+    
+    header {
+      background: #1c1c1c;
+      color: white;
+      padding: 18px 0;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 25px;
+    }
+    .logo { font-size: 1.4rem; font-weight: 700; }
+    .logo span { color: #c9a227; }
+    nav a {
+      color: #ddd;
+      text-decoration: none;
+      margin-left: 22px;
+      font-weight: 500;
+    }
+    nav a:hover, nav a.active { color: #c9a227; }
+
+    .page-header {
+      background: #1c1c1c;
+      color: white;
+      text-align: center;
+      padding: 50px 20px;
+    }
+    .page-header h1 { font-size: 2.4rem; margin-bottom: 8px; }
+    .page-header p { opacity: 0.9; }
+
+    .container { max-width: 1200px; margin: 0 auto; padding: 50px 25px; }
+
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 28px;
+    }
+    .product-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+      transition: transform 0.3s;
+    }
+    .product-card:hover { transform: translateY(-6px); }
+    .product-card img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+    }
+    .product-info { padding: 18px; }
+    .category {
+      font-size: 0.8rem;
+      color: #c9a227;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .product-info h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .product-info p {
+      font-size: 0.9rem;
+      color: #666;
+      margin-bottom: 12px;
+    }
+    .sizes {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 14px;
+      flex-wrap: wrap;
+    }
+    .sizes span {
+      border: 1px solid #ddd;
+      padding: 3px 10px;
+      border-radius: 20px;
+      font-size: 0.8rem;
+    }
+    .price-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .price { font-size: 1.2rem; font-weight: 700; }
+    .buy-btn {
+      background: #1c1c1c;
+      color: white;
+      border: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      text-decoration: none;
+    }
+    .buy-btn:hover { background: #c9a227; color: #1c1c1c; }
+
+    .wa-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      text-decoration: none;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.2);
+      z-index: 99;
+    }
+
+    footer {
+      background: #1c1c1c;
+      color: #aaa;
+      text-align: center;
+      padding: 25px;
+    }
+    footer strong { color: #c9a227; }
+
+    @media (max-width: 600px) {
+      .page-header h1 { font-size: 1.9rem; }
+      .header-container { flex-direction: column; gap: 12px; }
+      nav a { margin: 0 10px; }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">LUXE <span>SCENT & STYLE</span></div>
+      <nav>
+        <a href="perfumehub.html">Home</a>
+        <a href="perfume.html">Perfumes</a>
+        <a href="clothing.html" class="active">Clothing</a>
+        <a href="https://wa.me/2348012345678" target="_blank">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-header">
+    <h1>Premium Clothing</h1>
+    <p>Stylish, comfortable and quality pieces for everyone</p>
+  </div>
+
+  <div class="container">
+    <div class="products">
+
+      <!-- Clothing Items -->
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1521572163474-6854f5bf50ab?w=500" alt="T-Shirt">
+        <div class="product-info">
+          <div class="category">MEN</div>
+          <h3>Classic Cotton Tee</h3>
+          <p>Soft premium cotton, perfect for everyday wear.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦7,500</div>
+            <a href="https://wa.me/2348012345678?text=I want Classic Cotton Tee" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1434389677669-e08b4cac3105?w=500" alt="Shirt">
+        <div class="product-info">
+          <div class="category">MEN</div>
+          <h3>Linen Casual Shirt</h3>
+          <p>Breathable linen shirt for a smart casual look.</p>
+          <div class="sizes">
+            <span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦14,000</div>
+            <a href="https://wa.me/2348012345678?text=I want Linen Casual Shirt" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1515372039744-b8f02a3ae446?w=500" alt="Dress">
+        <div class="product-info">
+          <div class="category">WOMEN</div>
+          <h3>Floral Summer Dress</h3>
+          <p>Light and elegant dress for warm days.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦16,500</div>
+            <a href="https://wa.me/2348012345678?text=I want Floral Summer Dress" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500" alt="Jacket">
+        <div class="product-info">
+          <div class="category">UNISEX</div>
+          <h3>Urban Bomber Jacket</h3>
+          <p>Stylish and comfortable jacket for all seasons.</p>
+          <div class="sizes">
+            <span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦22,000</div>
+            <a href="https://wa.me/2348012345678?text=I want Urban Bomber Jacket" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1576566588028-4147f3842f27?w=500" alt="Hoodie">
+        <div class="product-info">
+          <div class="category">UNISEX</div>
+          <h3>Premium Hoodie</h3>
+          <p>Soft fleece hoodie for comfort and style.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦15,500</div>
+            <a href="https://wa.me/2348012345678?text=I want Premium Hoodie" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1594938298603-c8148c4dae35?w=500" alt="Trousers">
+        <div class="product-info">
+          <div class="category">MEN</div>
+          <h3>Slim Fit Chinos</h3>
+          <p>Comfortable slim-fit chinos for casual and semi-formal wear.</p>
+          <div class="sizes">
+            <span>30</span><span>32</span><span>34</span><span>36</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦12,800</div>
+            <a href="https://wa.me/2348012345678?text=I want Slim Fit Chinos" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?w=500" alt="Skirt">
+        <div class="product-info">
+          <div class="category">WOMEN</div>
+          <h3>Pleated Midi Skirt</h3>
+          <p>Elegant pleated skirt suitable for work and outings.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦13,200</div>
+            <a href="https://wa.me/2348012345678?text=I want Pleated Midi Skirt" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=500" alt="Polo">
+        <div class="product-info">
+          <div class="category">MEN</div>
+          <h3>Classic Polo Shirt</h3>
+          <p>Smart polo shirt for a clean casual look.</p>
+          <div class="sizes">
+            <span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦9,500</div>
+            <a href="https://wa.me/2348012345678?text=I want Classic Polo Shirt" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1562157873-818bc0726f68?w=500" alt="Blouse">
+        <div class="product-info">
+          <div class="category">WOMEN</div>
+          <h3>Silk Blouse</h3>
+          <p>Soft and elegant blouse for office or events.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦14,800</div>
+            <a href="https://wa.me/2348012345678?text=I want Silk Blouse" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1544966503-7cc5ac882d5f?w=500" alt="Jeans">
+        <div class="product-info">
+          <div class="category">UNISEX</div>
+          <h3>Slim Denim Jeans</h3>
+          <p>Comfortable stretch denim with modern fit.</p>
+          <div class="sizes">
+            <span>30</span><span>32</span><span>34</span><span>36</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦16,000</div>
+            <a href="https://wa.me/2348012345678?text=I want Slim Denim Jeans" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea?w=500" alt="Jacket">
+        <div class="product-info">
+          <div class="category">MEN</div>
+          <h3>Leather Biker Jacket</h3>
+          <p>Bold and stylish jacket for a strong look.</p>
+          <div class="sizes">
+            <span>M</span><span>L</span><span>XL</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦35,000</div>
+            <a href="https://wa.me/2348012345678?text=I want Leather Biker Jacket" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1572804013305-371a6e42afae?w=500" alt="Gown">
+        <div class="product-info">
+          <div class="category">WOMEN</div>
+          <h3>Evening Gown</h3>
+          <p>Elegant gown perfect for special occasions.</p>
+          <div class="sizes">
+            <span>S</span><span>M</span><span>L</span>
+          </div>
+          <div class="price-row">
+            <div class="price">₦28,500</div>
+            <a href="https://wa.me/2348012345678?text=I want Evening Gown" class="buy-btn">Order</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Floating WhatsApp Button -->
+  <a href="https://wa.me/2348012345678" target="_blank" class="wa-float">💬</a>
+
+  <footer>
+    <p>© 2026 <strong>Luxe Scent & Style</strong> • Clothing Collection</p>
+  </footer>
+
+</body>
+</html>

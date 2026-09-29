@@ -1,0 +1,115 @@
+
+    body {
+    
+      color: #333;
+    }
+
+    .hero {
+      
+      background-image: url('i_ren_e-tulip-5162642.jpg');
+      background-repeat: no-repeat;          
+      background-position: center;          
+      background-size: cover;                
+      background-attachment: fixed;          
+      min-height: 500px;                     
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;                    
+      padding: 40px 20px;
+      color: #faf7f7;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      
+    }
+
+    .hero p {
+      font-size: 1.3rem;
+      max-width: 600px;
+      
+    }
+
+    .cta-button {
+      display: inline-block;
+      padding: 14px 32px;
+      background-color: #ff6b6b;
+      color: white;
+      text-decoration: none;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+
+    .cta-button:hover {
+      background-color: #ee5253;
+      
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    }
+    .marquee-container {
+      background: #111;
+      color: #fff;
+      padding: 12px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-container marquee {
+      font-size: 1.1rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+    }
+
+    /*  ADVANCED: THREE SECTIONS  */
+    .section {
+      
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-shadow: 0 2px 6px rgba(0, 0, 0, 0.8);
+      font-size: 1.8rem;
+      font-weight: 600;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    /* Section 1 – background-position: center */
+    .section-1 {
+      background-image: url('robg43-landscape-8722691.jpg');
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+      background-attachment: scroll;
+    }
+
+    /* Section 2 – background-position: left top */
+    .section-2 {
+      background-image: url('dep377-lake-8844310.jpg');
+      background-repeat: no-repeat;
+      background-position: left top;
+      background-size: cover;
+      background-attachment: scroll;
+    }
+
+    /* Section 3 – background-position: right bottom */
+    .section-3 {
+      background-image: url('alexas_fotos-leaf-10415416.jpg');
+      background-repeat: no-repeat;
+      background-position: right bottom;
+      background-size: cover;
+      background-attachment: scroll;
+    }
+
+    /* Optional footer */
+    footer {
+      background: #222;
+      color: #eee;
+      text-align: center;
+      padding: 25px;
+      font-size: 0.95rem;
+    }
