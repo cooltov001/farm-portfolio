@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS SMART FARMS</title>
+  <link rel="icon" href="https://cdn.dribbble.com/userupload/28399362/file/original-dc16780f00613e8b1383bc2b8ec933cb.png">
+  
+  <!-- Modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a4d2e;
+      --primary-dark: #0f3320;
+      --accent: #a8e063;
+      --accent-dark: #8bc34a;
+      --bg: #f4f7f2;
+      --white: #ffffff;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+     header {
+      background: rgba(26, 77, 46, 0.97);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    nav a:hover {
+      color: white;
+      background: rgba(255,255,255,0.12);
+    }
+
+    .hero {
+      background: linear-gradient(rgba(10, 30, 18, 0.72), rgba(10, 30, 18, 0.72)), 
+                  url('https://images.unsplash.com/photo-1500937386664-56d1dfef3859?w=1600') center/cover no-repeat;
+      height: 560px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      color: white;
+      padding: 0 24px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 120px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 800px;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero-content h1 {
+      font-size: clamp(2.4rem, 5vw, 3.6rem);
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: -1px;
+      line-height: 1.15;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero-content p {
+      font-size: 1.25rem;
+      margin-bottom: 36px;
+      opacity: 0.92;
+      font-weight: 400;
+      letter-spacing: 0.3px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 15px 34px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      transition: var(--transition);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: var(--primary);
+      box-shadow: 0 8px 25px rgba(168, 224, 99, 0.35);
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(168, 224, 99, 0.45);
+    }
+
+    .btn-secondary {
+      background: transparent;
+      border: 2px solid rgba(255,255,255,0.85);
+      color: white;
+    }
+
+    .btn-secondary:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-4px);
+    }
+
+    .container {
+      max-width: 1150px;
+      margin: 0 auto;
+      padding: 70px 28px;
+    }
+
+    .top-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 36px;
+      margin-bottom: 80px;
+    }
+
+    .login-box, .quick-links {
+      background: var(--white);
+      padding: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .login-box:hover, .quick-links:hover {
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-4px);
+    }
+
+    .login-box h2, .quick-links h2 {
+      color: var(--primary);
+      margin-bottom: 28px;
+      font-size: 1.55rem;
+      font-weight: 700;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: 600;
+      color: #374151;
+      font-size: 0.95rem;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      transition: var(--transition);
+      background: #fafafa;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(26, 77, 46, 0.1);
+    }
+
+    .login-btn {
+      width: 100%;
+      padding: 15px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 8px;
+    }
+
+    .login-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(26, 77, 46, 0.25);
+    }
+
+    .register-link {
+      text-align: center;
+      margin-top: 22px;
+      font-size: 0.95rem;
+      color: var(--text-light);
+    }
+
+    .register-link a {
+      color: var(--primary);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    .register-link a:hover {
+      color: var(--accent-dark);
+    }
+
+    .quick-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quick-links a {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 20px;
+      background: #f0f7eb;
+      color: var(--primary);
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .quick-links a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateX(6px);
+      box-shadow: 0 8px 20px rgba(26, 77, 46, 0.2);
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== GALLERY ========== */
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 22px;
+      margin: 0 0 80px;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      cursor: pointer;
+    }
+
+    .gallery img:hover {
+      transform: scale(1.05) translateY(-6px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    /* ========== SERVICES ========== */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .service-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .service-card img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .service-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .service-card .content {
+      padding: 28px;
+      flex: 1;
+    }
+
+    .service-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.3rem;
+      font-weight: 700;
+    }
+
+    .service-card p {
+      color: var(--text-light);
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    /* ========== INVEST SECTION ========== */
+    .invest-section {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 55px 45px;
+      box-shadow: var(--shadow);
+      margin-bottom: 80px;
+      border-top: 5px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .invest-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      right: -20%;
+      width: 400px;
+      height: 400px;
+      background: radial-gradient(circle, rgba(168,224,99,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .invest-section h2 {
+      color: var(--primary);
+      font-size: 2.1rem;
+      margin-bottom: 16px;
+      text-align: center;
+      font-weight: 800;
+    }
+
+    .invest-section > p {
+      text-align: center;
+      color: var(--text-light);
+      font-size: 1.1rem;
+      max-width: 720px;
+      margin: 0 auto 45px;
+      line-height: 1.7;
+    }
+
+    .invest-options {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 24px;
+      margin-bottom: 45px;
+    }
+
+    .invest-card {
+      background: #f8fbf5;
+      border: 2px solid #e4eedc;
+      border-radius: 16px;
+      padding: 32px 24px;
+      text-align: center;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .invest-card:hover {
+      border-color: var(--primary);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 35px rgba(26, 77, 46, 0.12);
+      background: white;
+    }
+
+    .invest-card .icon {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+
+    .invest-card:hover .icon {
+      transform: scale(1.15);
+    }
+
+    .invest-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .invest-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 18px;
+      line-height: 1.6;
+    }
+
+    .invest-card .amount {
+      font-weight: 700;
+      color: #2e7d32;
+      font-size: 1.15rem;
+      letter-spacing: -0.3px;
+    }
+
+    .invest-cta {
+      text-align: center;
+    }
+
+    .invest-cta a {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--primary);
+      color: white;
+      padding: 16px 42px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.05rem;
+      transition: var(--transition);
+      box-shadow: 0 8px 25px rgba(26, 77, 46, 0.25);
+    }
+
+    .invest-cta a:hover {
+      background: var(--primary-dark);
+      transform: translateY(-4px);
+      box-shadow: 0 14px 30px rgba(26, 77, 46, 0.35);
+    }
+
+    .about {
+      background: var(--white);
+      border-radius: var(--radius);
+      padding: 50px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      transition: var(--transition);
+    }
+
+    .about:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .about h2 {
+      color: var(--primary);
+      margin-bottom: 24px;
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+
+    .about p {
+      margin-bottom: 18px;
+      color: #4b5563;
+      font-size: 1.05rem;
+      line-height: 1.75;
+    }
+
+    .about strong {
+      color: var(--primary);
+    }
+
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    footer p {
+      opacity: 0.92;
+      font-size: 0.98rem;
+    }
+
+    footer p:last-child {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 600px) {
+      .top-section {
+        grid-template-columns: 1fr;
+      }
+
+      .header-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .invest-section {
+        padding: 40px 28px;
+      }
+
+      .about {
+        padding: 36px 28px;
+      }
+
+      .hero {
+        height: 480px;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .hero-content h1 {
+        font-size: 2.1rem;
+      }
+
+      .btn {
+        padding: 13px 26px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-container">
+      <div class="logo">NEXUS <span>SMART FARMS</span></div>
+      <nav>
+        <a href="product.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="biogas.html">Biogas & Training</a>
+        <a href="#invest">Invest</a>
+        <a href="farm-register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h1>NEXUS SMART FARMS</h1>
+      <p>“Connecting Growth, Power, and Knowledge.”</p>
+      <div class="hero-buttons">
+        <a href="farm-register.html" class="btn btn-primary">Register Now</a>
+        <a href="#invest" class="btn btn-secondary">Become an Investor</a>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <div class="top-section animate">
+      <div class="login-box">
+        <h2>Farmer Login</h2>
+        <form action="#" method="post">
+          <div class="form-group">
+            <label for="username">Username / Email</label>
+            <input type="text" id="username" name="username" placeholder="Enter username or email" required>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="Enter password" required>
+          </div>
+          <button type="submit" class="login-btn">Login</button>
+        </form>
+        <div class="register-link">
+          Don't have an account? <a href="farm-register.html">Register here</a>
+        </div>
+      </div>
+
+      <div class="quick-links">
+        <h2>Quick Access</h2>
+        <ul>
+          <li><a href="marketplace.html">🛒 Marketplace – Buy & Sell</a></li>
+          <li><a href="biogas.html">⚡ Biogas Setup & Training</a></li>
+          <li><a href="#invest">💰 Invest in Farming</a></li>
+          <li><a href="farm-register.html">📝 Register as a Farmer</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Gallery -->
+    <h2 class="section-title animate">Life on the Farm</h2>
+    <p class="section-subtitle animate">Healthy animals • Sustainable practices • Modern farming</p>
+    
+    <div class="gallery animate">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS8GeHZaSOsr4nc44huxocghf45LDAA6U7Vgp_XnHk1hDx5jKxLYcMNjKs&s=10" alt="Feeding pigs">
+      <img src="https://www.news-medical.net/images/news/ImageForNews_764815_17001950700469155.jpg" alt="Pigs">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQKgKE7Yng2QscH9IFf8eEj6BOENLp0Ou5JN0otIvkCmoj9tRiH6bfqs6c&s=10" alt="Goats feeding">
+      <img src="https://mranimalfarm.com/wp-content/uploads/2018/03/Nigerian-Dwarf-Goats-Can-You-Make-Money-Raising-Goats-07.jpg" alt="Goats">
+    </div>
+
+    <!-- What We Offer -->
+    <h2 class="section-title animate">What We Offer</h2>
+    <p class="section-subtitle animate">Modern solutions for the modern farmer</p>
+
+    <div class="services">
+      <div class="service-card animate">
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600" alt="Biogas">
+        <div class="content">
+          <h3>Biogas & Training Hub</h3>
+          <p>Custom digester setups and practical masterclasses designed specifically for farmers.</p>
+        </div>
+      </div>
+
+      <div class="service-card animate">
+        <img src="https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=600" alt="Zero Waste">
+        <div class="content">
+          <h3>Zero-Waste Ecosystem</h3>
+          <p>Crops feed animals → Animal waste creates power → Residue fertilizes crops.</p>
+        </div>
+      </div>
+
+      <div class="service-card animate">
+        <img src="https://images.unsplash.com/photo-1574943320219-553eb213f72d?w=600" alt="Marketplace">
+        <div class="content">
+          <h3>Farm Marketplace</h3>
+          <p>Buy and sell quality farm products, livestock, and equipment in a trusted platform.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVEST SECTION -->
+    <div class="invest-section animate" id="invest">
+      <h2>💰 Invest in Real Farming</h2>
+      <p>
+        Want to invest in agriculture but don’t know where to start?  
+        Nexus Smart Farms gives you a safe and transparent way to put your money into real farm projects and earn returns — without needing land, experience, or daily management.
+      </p>
+
+      <div class="invest-options">
+        <div class="invest-card">
+          <div class="icon">🐷</div>
+          <h3>Livestock Investment</h3>
+          <p>Sponsor the rearing of pigs or goats. We handle feeding, healthcare, and sales. You earn a share of the profit when the animals are sold.</p>
+          <div class="amount">From ₦150,000</div>
+        </div>
+
+        <div class="invest-card">
+          <div class="icon">🌽</div>
+          <h3>Crop Cycle Investment</h3>
+          <p>Fund a full planting-to-harvest cycle of maize, plantain, or cassava. Receive returns after harvest and sales.</p>
+          <div class="amount">From ₦100,000</div>
+        </div>
+
+        <div class="invest-card">
+          <div class="icon">⚡</div>
+          <h3>Biogas Project Investment</h3>
+          <p>Invest in the construction and operation of biogas digesters. Earn from energy savings and fertilizer sales.</p>
+          <div class="amount">From ₦250,000</div>
+        </div>
+
+        <div class="invest-card">
+          <div class="icon">📦</div>
+          <h3>Flexible Packages</h3>
+          <p>Choose short-term (3–6 months) or long-term (12 months) investment plans based on your goal and risk level.</p>
+          <div class="amount">Custom Options</div>
+        </div>
+      </div>
+
+      <div class="invest-cta">
+        <a href="https://wa.me/2347067682983" target="_blank">Talk to Us About Investing →</a>
+      </div>
+    </div>
+
+    <!-- About Us -->
+    <div class="about animate" id="about">
+      <h2>About Nexus Smart Farms</h2>
+      <p>
+        We are a forward-looking agricultural enterprise built on a simple but powerful belief: 
+        <strong>farming can feed the world, power communities, and create lasting value</strong> when tradition meets purposeful innovation.
+      </p>
+      <p>
+        At our core, we grow high-quality crops with care for the land and the people who depend on it. 
+        From carefully managed fields to consistent harvests, our farming operations focus on sustainable practices, 
+        soil health, and reliable yields.
+      </p>
+      <p>
+        Alongside our crops, we actively advance energy innovation on the farm through biogas systems and other renewable solutions. 
+        The goal is to reduce dependence on conventional power, lower costs, and show that modern agriculture can contribute to cleaner energy systems.
+      </p>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>© 2026 Nexus Smart Farms • Connecting Growth, Power, and Knowledge</p>
+    <p>Marketplace | Biogas Training | Investment Opportunities</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

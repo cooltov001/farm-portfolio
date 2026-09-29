@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Invest in Farming | Nexus Smart Farms</title>
+  <link rel="icon" href="https://cdn.dribbble.com/userupload/28399362/file/original-dc16780f00613e8b1383bc2b8ec933cb.png">
+  
+  <!-- Modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a4d2e;
+      --primary-dark: #0f3320;
+      --accent: #a8e063;
+      --accent-dark: #8bc34a;
+      --bg: #f4f7f2;
+      --white: #ffffff;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: rgba(26, 77, 46, 0.97);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: white;
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(rgba(10, 30, 18, 0.72), rgba(10, 30, 18, 0.72)), 
+                  url('https://images.unsplash.com/photo-1500937386664-56d1dfef3859?w=1600') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 100px 24px 90px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 100px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin-bottom: 18px;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 680px;
+      margin: 0 auto;
+      opacity: 0.93;
+      line-height: 1.7;
+    }
+
+    /* ========== CONTAINER ========== */
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 70px 28px;
+    }
+
+    /* ========== SECTION TITLES ========== */
+    .section-title {
+      text-align: center;
+      font-size: 2.15rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== WHY INVEST ========== */
+    .why-invest {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
+      margin-bottom: 80px;
+    }
+
+    .why-card {
+      background: var(--white);
+      padding: 32px 24px;
+      border-radius: var(--radius);
+      text-align: center;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .why-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .why-card .icon {
+      font-size: 2.6rem;
+      margin-bottom: 16px;
+      transition: var(--transition);
+    }
+
+    .why-card:hover .icon {
+      transform: scale(1.15);
+    }
+
+    .why-card h3 {
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-size: 1.2rem;
+      font-weight: 700;
+    }
+
+    .why-card p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      line-height: 1.65;
+    }
+
+    /* ========== OPTIONS GRID ========== */
+    .options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .option-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      transition: var(--transition);
+    }
+
+    .option-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .option-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .option-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .option-content {
+      padding: 28px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .option-content h3 {
+      color: var(--primary);
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      font-weight: 700;
+    }
+
+    .option-content .amount {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #2e7d32;
+      margin-bottom: 14px;
+      letter-spacing: -0.3px;
+    }
+
+    .option-content p {
+      color: var(--text-light);
+      margin-bottom: 16px;
+      font-size: 0.98rem;
+      line-height: 1.65;
+    }
+
+    .option-content ul {
+      margin: 0 0 24px 18px;
+      color: #4b5563;
+      font-size: 0.95rem;
+    }
+
+    .option-content ul li {
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+
+    .select-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 13px 26px;
+      border-radius: 50px;
+      font-weight: 600;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 6px 18px rgba(26, 77, 46, 0.2);
+    }
+
+    .select-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(26, 77, 46, 0.3);
+    }
+
+    /* ========== HOW IT WORKS ========== */
+    .how-it-works {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 50px 40px;
+      box-shadow: var(--shadow);
+      margin-bottom: 70px;
+      transition: var(--transition);
+    }
+
+    .how-it-works:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .how-it-works h2 {
+      text-align: center;
+      color: var(--primary);
+      margin-bottom: 40px;
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 28px;
+    }
+
+    .step {
+      text-align: center;
+      padding: 16px 10px;
+      transition: var(--transition);
+    }
+
+    .step:hover {
+      transform: translateY(-6px);
+    }
+
+    .step-number {
+      width: 54px;
+      height: 54px;
+      background: var(--primary);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0 auto 18px;
+      transition: var(--transition);
+      box-shadow: 0 6px 18px rgba(26, 77, 46, 0.25);
+    }
+
+    .step:hover .step-number {
+      background: var(--accent);
+      color: var(--primary);
+      transform: scale(1.1);
+    }
+
+    .step h4 {
+      color: var(--primary);
+      margin-bottom: 10px;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    .step p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* ========== REGISTER BOX ========== */
+    .register-box {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 42px;
+      box-shadow: var(--shadow);
+      margin-bottom: 50px;
+      border-top: 5px solid var(--accent);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .register-box:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .register-box::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -15%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168,224,99,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .register-box h2 {
+      color: var(--primary);
+      text-align: center;
+      margin-bottom: 10px;
+      font-size: 1.9rem;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .register-box > p {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 35px;
+      font-size: 1.05rem;
+      position: relative;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+      position: relative;
+    }
+
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--primary);
+      font-size: 0.95rem;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border: 2px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: inherit;
+      background: #fafafa;
+      transition: var(--transition);
+      color: var(--text);
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      outline: none;
+      border-color: var(--primary);
+      background: white;
+      box-shadow: 0 0 0 4px rgba(26, 77, 46, 0.12);
+    }
+
+    .form-group textarea {
+      height: 120px;
+      max-height: 200px;
+      resize: none;
+      overflow-y: auto;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      background: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 12px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      transition: var(--transition);
+      margin-top: 12px;
+      box-shadow: 0 6px 20px rgba(26, 77, 46, 0.25);
+    }
+
+    .submit-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(26, 77, 46, 0.35);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--primary);
+      color: white;
+      text-align: center;
+      padding: 40px 24px;
+    }
+
+    footer p {
+      opacity: 0.92;
+      font-size: 0.98rem;
+    }
+
+    footer p:last-child {
+      margin-top: 10px;
+      font-size: 0.88rem;
+      opacity: 0.75;
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 700px) {
+      .header-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
+
+      .register-box {
+        padding: 36px 26px;
+      }
+
+      .how-it-works {
+        padding: 40px 26px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero {
+        padding: 80px 20px 70px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="header-container">
+      <div class="logo">NEXUS <span>SMART FARMS</span></div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="marketplace.html">Marketplace</a>
+        <a href="biogas.html">Biogas & Training</a>
+        <a href="farm-register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Invest in Real Farming</h1>
+      <p>Put your money into real agricultural projects and earn returns — without needing land, farming experience, or daily management.</p>
+    </div>
+  </section>
+
+  <div class="container">
+
+    <!-- Why Invest -->
+    <h2 class="section-title animate">Why Invest With Us?</h2>
+    <p class="section-subtitle animate">Safe, transparent, and managed by experienced farmers</p>
+
+    <div class="why-invest">
+      <div class="why-card animate">
+        <div class="icon">🛡️</div>
+        <h3>Fully Managed</h3>
+        <p>We handle everything — feeding, healthcare, security, and sales. You just invest and track progress.</p>
+      </div>
+      <div class="why-card animate">
+        <div class="icon">📊</div>
+        <h3>Transparent Updates</h3>
+        <p>Receive regular reports and photos of your investment so you always know what is happening.</p>
+      </div>
+      <div class="why-card animate">
+        <div class="icon">💰</div>
+        <h3>Real Returns</h3>
+        <p>Your money goes into actual farm production. Returns come from real sales of crops and livestock.</p>
+      </div>
+      <div class="why-card animate">
+        <div class="icon">🌱</div>
+        <h3>Impact + Profit</h3>
+        <p>Support food production and clean energy while growing your capital.</p>
+      </div>
+    </div>
+
+    <!-- Investment Options -->
+    <h2 class="section-title animate">Available Investment Options</h2>
+    <p class="section-subtitle animate">Choose the plan that matches your goal and budget</p>
+
+    <div class="options-grid">
+
+      <!-- Livestock -->
+      <div class="option-card animate">
+        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600" alt="Livestock">
+        <div class="option-content">
+          <h3>🐷 Livestock Investment</h3>
+          <div class="amount">From ₦150,000</div>
+          <p>Sponsor the rearing of pigs or goats. We manage feeding, healthcare, and sales.</p>
+          <ul>
+            <li>Duration: 6 – 8 months</li>
+            <li>Expected Return: 20% – 35%</li>
+            <li>Risk Level: Medium</li>
+            <li>You receive profit share after sales</li>
+          </ul>
+          <a href="#register" class="select-btn">Select This Option</a>
+        </div>
+      </div>
+
+      <!-- Crops -->
+      <div class="option-card animate">
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600" alt="Crops">
+        <div class="option-content">
+          <h3>🌽 Crop Cycle Investment</h3>
+          <div class="amount">From ₦100,000</div>
+          <p>Fund a full planting-to-harvest cycle of maize, plantain, or cassava.</p>
+          <ul>
+            <li>Duration: 4 – 7 months</li>
+            <li>Expected Return: 18% – 30%</li>
+            <li>Risk Level: Low – Medium</li>
+            <li>Returns paid after harvest & sales</li>
+          </ul>
+          <a href="#register" class="select-btn">Select This Option</a>
+        </div>
+      </div>
+
+      <!-- Biogas -->
+      <div class="option-card animate">
+        <img src="https://images.unsplash.com/photo-1473341304170-971dccb5ac1e?w=600" alt="Biogas">
+        <div class="option-content">
+          <h3>⚡ Biogas Project Investment</h3>
+          <div class="amount">From ₦250,000</div>
+          <p>Invest in the construction and operation of biogas digesters.</p>
+          <ul>
+            <li>Duration: 12 months</li>
+            <li>Expected Return: 15% – 25%</li>
+            <li>Risk Level: Low</li>
+            <li>Earn from energy & fertilizer sales</li>
+          </ul>
+          <a href="#register" class="select-btn">Select This Option</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- How It Works -->
+    <div class="how-it-works animate">
+      <h2>How Investment Works</h2>
+      <div class="steps">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h4>Choose a Plan</h4>
+          <p>Select the investment option that suits your budget and goal.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h4>Register & Pay</h4>
+          <p>Fill the form below and complete your investment payment.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h4>We Manage Everything</h4>
+          <p>Our team handles all farm operations and sends you updates.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">4</div>
+          <h4>Receive Your Returns</h4>
+          <p>At the end of the cycle, you receive your capital + profit.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="register-box animate" id="register">
+      <h2>Register Your Interest</h2>
+      <p>Fill this form and our investment team will contact you within 24–48 hours.</p>
+
+      <form>
+        <div class="form-row">
+          <div class="form-group">
+            <label for="fullname">Full Name</label>
+            <input type="text" id="fullname" name="fullname" placeholder="Enter your full name" required>
+          </div>
+          <div class="form-group">
+            <label for="phone">Phone Number</label>
+            <input type="tel" id="phone" name="phone" placeholder="e.g. 0801 234 5678" required>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" placeholder="yourname@email.com" required>
+        </div>
+
+        <div class="form-group">
+          <label for="interest">Which investment are you interested in?</label>
+          <select id="interest" name="interest" required>
+            <option value="">-- Select an option --</option>
+            <option value="livestock">Livestock Investment (From ₦150,000)</option>
+            <option value="crops">Crop Cycle Investment (From ₦100,000)</option>
+            <option value="biogas">Biogas Project Investment (From ₦250,000)</option>
+            <option value="flexible">I want a custom / flexible package</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="amount">How much are you planning to invest? (Optional)</label>
+          <input type="text" id="amount" name="amount" placeholder="e.g. ₦200,000">
+        </div>
+
+        <div class="form-group">
+          <label for="message">Additional Message (Optional)</label>
+          <textarea id="message" name="message" rows="4" placeholder="Tell us anything else we should know..."></textarea>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Investment Interest</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Nexus Smart Farms • Investment Opportunities</p>
+    <p>Real Farms. Real Returns. Transparent Management.</p>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nexus Farm Marketplace</title>
+  <link rel="icon" href="https://cdn.dribbble.com/userupload/28399362/file/original-dc16780f00613e8b1383bc2b8ec933cb.png">
+  
+  <!-- Modern font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --primary: #1a4d2e;
+      --primary-dark: #0f3320;
+      --accent: #a8e063;
+      --accent-dark: #8bc34a;
+      --bg: #f4f7f2;
+      --white: #ffffff;
+      --text: #1f2937;
+      --text-light: #6b7280;
+      --radius: 16px;
+      --shadow: 0 10px 30px rgba(0,0,0,0.08);
+      --shadow-hover: 0 20px 40px rgba(0,0,0,0.12);
+      --transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ========== ANIMATIONS ========== */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .animate.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ========== HEADER ========== */
+    header {
+      background: rgba(26, 77, 46, 0.97);
+      backdrop-filter: blur(12px);
+      color: white;
+      padding: 16px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+      transition: var(--transition);
+    }
+
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 28px;
+    }
+
+    .logo {
+      font-size: 1.55rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .logo span {
+      color: var(--accent);
+    }
+
+    nav {
+      display: flex;
+      gap: 8px;
+    }
+
+    nav a {
+      color: rgba(255,255,255,0.9);
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 50px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: var(--transition);
+    }
+
+    nav a:hover {
+      color: white;
+      background: rgba(255,255,255,0.12);
+    }
+
+    /* ========== HERO ========== */
+    .hero {
+      background: linear-gradient(rgba(10, 30, 18, 0.7), rgba(10, 30, 18, 0.7)), 
+                  url('https://images.unsplash.com/photo-1500937386664-56d1dfef3859?w=1600') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 90px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 90px;
+      background: linear-gradient(to top, var(--bg), transparent);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 780px;
+      margin: 0 auto;
+      animation: fadeUp 0.9s ease forwards;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.3rem, 5vw, 3.2rem);
+      font-weight: 800;
+      margin-bottom: 14px;
+      letter-spacing: -0.8px;
+      line-height: 1.2;
+      text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      opacity: 0.93;
+      max-width: 600px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ========== CONTAINER ========== */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 70px 28px;
+    }
+
+    /* ========== SECTION TITLES ========== */
+    .section-title {
+      text-align: center;
+      font-size: 2.15rem;
+      color: var(--primary);
+      margin-bottom: 12px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      color: var(--text-light);
+      margin-bottom: 48px;
+      font-size: 1.1rem;
+    }
+
+    /* ========== PRODUCT CARDS ========== */
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 30px;
+      margin-bottom: 80px;
+    }
+
+    .product-card {
+      background: var(--white);
+      border-radius: var(--radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+      box-shadow: var(--shadow-hover);
+    }
+
+    .product-card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .product-card:hover img {
+      transform: scale(1.06);
+    }
+
+    .product-content {
+      padding: 26px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .product-content h3 {
+      color: var(--primary);
+      font-size: 1.25rem;
+      margin-bottom: 12px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+
+    .status {
+      display: inline-block;
+      background: #e8f5e9;
+      color: #2e7d32;
+      padding: 5px 14px;
+      border-radius: 50px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      margin-bottom: 14px;
+      letter-spacing: 0.2px;
+    }
+
+    .status.yellow {
+      background: #fff8e1;
+      color: #f57f17;
+    }
+
+    .product-content p {
+      font-size: 0.95rem;
+      color: var(--text-light);
+      margin-bottom: 14px;
+      line-height: 1.65;
+    }
+
+    .product-content ul {
+      margin: 0 0 20px 18px;
+      font-size: 0.92rem;
+      color: #4b5563;
+    }
+
+    .product-content ul li {
+      margin-bottom: 7px;
+      line-height: 1.5;
+    }
+
+    .order-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: auto;
+      background: var(--primary);
+      color: white;
+      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 50px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: 0 6px 18px rgba(26, 77, 46, 0.2);
+    }
+
+    .order-btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-3px);
+      box-shadow: 0 10px 25px rgba(26, 77, 46, 0.3);
+    }
+
+    /* ========== ZERO WASTE ========== */
+    .zero-waste {
+      background: var(--white);
+      border-radius: 20px;
+      padding: 48px 42px;
+      box-shadow: var(--shadow);
+      margin-bottom: 40px;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .zero-waste:hover {
+      box-shadow: var(--shadow-hover);
+    }
+
+    .zero-waste::before {
+      content: '';
+      position: absolute;
+      top: -40%;
+      right: -10%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(168,224,99,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .zero-waste h3 {
+      color: var(--primary);
+      font-size: 1.7rem;
+      margin-bottom: 16px;
+      font-weight: 800;
+      position: relative;
+    }
+
+    .zero-waste > p {
+      color: var(--text-light);
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+      line-height: 1.7;
+      position: relative;
+    }
+
+    .zero-waste ol {
+      margin-left: 22px;
+      position: relative;
+    }
+
+    .zero-waste li {
+      margin-bottom: 14px;
+      color: #4b5563;
+      line-height: 1.65;
+      font-size: 1.02rem;
+    }
+
+    .zero-waste li b {
+      color: var(--primary);
+    }
+
+    /* ========== FOOTER ========== */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 50px 28px;
+      text-align: center;
+    }
+
+    footer h4 {
+      font-size: 1.35rem;
+      margin-bottom: 20px;
+      font-weight: 700;
+    }
+
+    footer p {
+      margin-bottom: 10px;
+      opacity: 0.92;
+      font-size: 1rem;
+    }
+
+    footer p b {
+      font-weight: 600;
+    }
+
+    .back-top {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 24px;
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 0.98rem;
+      transition: var(--transition);
+      padding: 8px 18px;
+      border-radius: 50px;
+    }
+
+    .back-top:hover {
+      background: rgba(168, 224, 99, 0.15);
+      transform: translateY(-2px);
+    }
+
+    /* ========== RESPONSIVE ========== */
+    @media (max-width: 660px) {
+      .header-container {
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .zero-waste {
+        padding: 36px 28px;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .hero {
+        padding: 75px 20px 65px;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .product-content {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-container">
+      <div class="logo">NEXUS <span>SMART FARMS</span></div>
+      <nav>
+        <a href="potfolio.html">Home</a>
+        <a href="biogas.html">Biogas & Training</a>
+        <a href="farm-register.html">Register</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Nexus Farm Marketplace</h1>
+      <p>Premium crops & livestock • Direct from our tech-managed farm</p>
+    </div>
+  </section>
+
+  <!-- MAIN CONTENT -->
+  <div class="container">
+
+    <!-- CROP YARD -->
+    <h2 class="section-title animate">Crop Yard</h2>
+    <p class="section-subtitle animate">All premium harvests are displayed with direct market specifications before purchase.</p>
+
+    <div class="products-grid">
+
+      <!-- Maize -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=600" alt="Maize">
+        <div class="product-content">
+          <h3>🌽 Commercial Maize (Corn)</h3>
+          <span class="status">🟢 READY FOR BULK SUPPLY</span>
+          <p>High-yield yellow and white maize grains grown with automated soil precision. Meticulously shelled and dried to optimal moisture levels.</p>
+          <ul>
+            <li><b>Feed Industry:</b> Premium protein-grade for livestock & poultry.</li>
+            <li><b>Human Consumption:</b> Clean grains for flour milling and food markets.</li>
+            <li><b>Quality:</b> High density, zero debris contamination.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Order Bulk Maize</a>
+        </div>
+      </div>
+
+      <!-- Plantain -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1603833665858-e61d17a86224?w=600" alt="Plantain">
+        <div class="product-content">
+          <h3>🍌 Premium Plantain & Banana</h3>
+          <span class="status">🟢 FRESH HARVEST IN STOCK</span>
+          <p>Giant-sized healthy bunches cut straight from our tech-managed plantation fields.</p>
+          <ul>
+            <li><b>Commercial Buyers:</b> Massive volumes for traders & processors.</li>
+            <li><b>Value Addition:</b> Perfect for chips and flour production.</li>
+            <li><b>Options:</b> Green (transport) or naturally ripened bunches.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Order Plantain Bunches</a>
+        </div>
+      </div>
+
+      <!-- Cassava -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1599599810769-bcde5a160d32?w=600" alt="Cassava">
+        <div class="product-content">
+          <h3>🌱 High-Yield Cassava</h3>
+          <span class="status yellow">🟡 HARVEST ON DEMAND</span>
+          <p>Improved disease-resistant varieties cultivated for rapid maturation and maximum tuber weight.</p>
+          <ul>
+            <li><b>Garri & Fufu:</b> High dry-matter content for maximum yield.</li>
+            <li><b>Industrial Starch:</b> Excellent for mills and processors.</li>
+            <li><b>Stem Cuttings:</b> Certified multiplication stems available.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Book Fresh Cassava</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- LIVESTOCK YARD -->
+    <h2 class="section-title animate">Livestock Yard & Breeding</h2>
+    <p class="section-subtitle animate">Healthy, high-performing livestock managed with veterinary precision.</p>
+
+    <div class="products-grid">
+
+      <!-- Pigs -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600" alt="Pigs">
+        <div class="product-content">
+          <h3>🐷 Commercial Pig Production</h3>
+          <span class="status">🟢 UNITS READY FOR PICKUP</span>
+          <p>High-carcass-yield Large White and Landrace breeds raised in modern, hyper-clean pens.</p>
+          <ul>
+            <li><b>Market Weight:</b> Rapid lean muscle development.</li>
+            <li><b>Processors Choice:</b> High dressing percentage.</li>
+            <li><b>Healthy Stock:</b> Strict bio-security monitoring.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Order Market Hogs</a>
+        </div>
+      </div>
+
+      <!-- Goats -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1524024973431-2ad916746881?w=600" alt="Goats">
+        <div class="product-content">
+          <h3>🐐 Premium Goats</h3>
+          <span class="status">🟢 AVAILABLE NOW</span>
+          <p>Hardy, fast-growing local and exotic crossbreeds adapted to modern farm systems.</p>
+          <ul>
+            <li><b>Meat Supply:</b> Perfect for festive seasons & hotels.</li>
+            <li><b>Disease Resistant:</b> Strict vaccination schedules.</li>
+            <li><b>Forage Fed:</b> Boosted organic meat quality.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Buy Live Goats</a>
+        </div>
+      </div>
+
+      <!-- Poultry -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1548550023-2bdb3c5beed7?w=600" alt="Poultry">
+        <div class="product-content">
+          <h3>🐔 Chicken & Fresh Eggs</h3>
+          <span class="status">🟢 DAILY FRESH SUPPLY</span>
+          <p>High-capacity commercial poultry delivering premium table eggs and heavy meat birds daily.</p>
+          <ul>
+            <li><b>Table Eggs:</b> Golden-yolk, thick-shelled, packed fresh.</li>
+            <li><b>Broilers & Layers:</b> Heavy meat birds & point-of-lay pullets.</li>
+            <li><b>Wholesale:</b> Weekly crate agreements available.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Order Crates / Chickens</a>
+        </div>
+      </div>
+
+      <!-- Breeding -->
+      <div class="product-card animate">
+        <img src="https://images.unsplash.com/photo-1516467508483-a7212febe31a?w=600" alt="Breeding">
+        <div class="product-content">
+          <h3>🧬 Specialized Breeding</h3>
+          <span class="status">🟢 CERTIFIED STOCK OPEN</span>
+          <p>Superior breeding lines to help other farmers upgrade their herds and flocks.</p>
+          <ul>
+            <li><b>F1 Parent Stock:</b> High-fertility gilts and bucks.</li>
+            <li><b>Genetic Upgrades:</b> Better litter sizes & feed conversion.</li>
+            <li><b>Starter Kits:</b> Healthy breeding pairs for new farmers.</li>
+          </ul>
+          <a href="https://wa.me/2347067682983" target="_blank" class="order-btn">👉 Consult Breeding Expert</a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ZERO WASTE -->
+    <div class="zero-waste animate">
+      <h3>♻️ Our Circular Zero-Waste Ecosystem</h3>
+      <p>At Nexus Smart Farms, nothing goes to waste. Our systems loop together to build an unbreakable economic chain:</p>
+      <ol>
+        <li><b>Step 1 – Our Crops:</b> Plantain and maize plantations provide organic feed and market sales capital.</li>
+        <li><b>Step 2 – Our Livestock:</b> Pigs and goats process feed and produce valuable manure in hygienic environments.</li>
+        <li><b>Step 3 – Our Power:</b> Biogas digesters convert manure into clean gas and potent organic fertilizer that returns to the soil.</li>
+      </ol>
+    </div>
+
+  </div>
+
+  <!-- FOOTER -->
+  <footer>
+    <h4>Nexus Smart Farms – Contact & Hours</h4>
+    <p>📍 <b>Farm Address:</b> Visit Our Tech Farm Yard Facility</p>
+    <p>📞 <b>Phone:</b> +234 706 768 2983</p>
+    <p>✉️ <b>Email:</b> info@nexussmartfarms.com</p>
+    <p>🕒 <b>Hours:</b> Mon–Fri 8:00 AM – 5:00 PM | Sat (Pre-booked) 9:00 AM – 2:00 PM</p>
+    <p style="margin-top: 22px; opacity: 0.8;">&copy; 2026 Nexus Smart Farms. Connecting Growth, Power & Knowledge.</p>
+    <a href="#" class="back-top">↑ Back to Top</a>
+  </footer>
+
+  <!-- Scroll Animation Script -->
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    document.querySelectorAll('.animate').forEach(el => {
+      observer.observe(el);
+    });
+  </script>
+
+</body>
+</html>
